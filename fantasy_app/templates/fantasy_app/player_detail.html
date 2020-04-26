@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <div class="player-detail" >
+        <img src="{{player.player_image.url}}" alt="">
+        <h1 class="player-name">{{ player.player_name }}</h3>
+        <h4>{{ player.designation }}</h4>
+        <h3>{{ player.team.team_name }}</h3>
+</div>
+{% endblock content %}
+    

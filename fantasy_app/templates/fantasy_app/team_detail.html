@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <div class="team-detail" >
+        <h1 class="team-title">{{ team.team_name }}</h3>
+        <img src="{{team.logo.url}}" alt="">
+        <div class="Homeground"><h4>Homeground: {{ team.home_city }}</h4></div>
+    </div>
+</div>
+<div>
+    <div class='team-player-list'>
+        <ol>
+        {% for player in team.players.all %}
+        <li><a href="{% url 'fantasy_app:player_detail' slug=player.slug %}"><h3 class="player-name">{{ player.player_name }}</h3></a></li>
+        {% endfor %}
+       </ol>     
+    </div>
+</div>
+{% endblock %}

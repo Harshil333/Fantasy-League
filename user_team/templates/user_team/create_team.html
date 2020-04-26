@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+        
+    <h1>Credits Remaining: {{credits}}</h1> 
+    <table>
+        <tr>
+        <th>Player</th>
+        <th>Credits</th>
+        <th>Team</th>
+        <th></th>
+        </tr>
+    {% for  player in object_list %}
+    <tr>
+        <td>{{ player.player_name }}</td>
+        <td>{{ player.credit }}</td>
+        <td>{{ player.team.team_name }}</td>
+        <td>
+        {% if player in userplayer_list %}
+            <a href='{% url 'user_team:remove' slug=player.slug %}' class='btn btn-sm btn-fill btn-danger'><span class="glyphicon glyphicon-minus"></a>
+        {% else %}
+                
+                {% if player.credit <= credits %} 
+                    <a href='{% url 'user_team:add' slug=player.slug  %}' class='btn btn-sm btn-fill btn-success'><span class="glyphicon glyphicon-plus"></span></a>
+                {% else %} 
+                    <a href='' class='btn btn-sm btn-fill btn-secondary'><span class="glyphicon glyphicon-plus"></span></a>
+                {% endif %}
+                    
+        {% endif %}
+        </td>
+        </li>
+    </tr>
+    {% endfor %}
+    </table>
+    {% if userplayer_list|length == 2 %} 
+        <a href='{% url 'user_team:viewmyteam' %}' class='btn btn-sm btn-fill btn-success'>Create Team</a>
+    {% else %} 
+        <a href='' class='btn btn-sm btn-fill btn-secondary'>Create Team</a>
+    {% endif %} 
+{% endblock content %}
+    

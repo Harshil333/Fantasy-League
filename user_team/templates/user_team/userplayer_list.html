@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% comment %} {% if object_list|length == 2 %} {% endcomment %}
+        
+    <h3>Points: {{points}} </h3>
+        <ol>
+        {% for player in object_list %}
+            
+            {% if player.user == user %}
+                <li>{{ player.player.player_name }}</li>
+            {% endif %}        
+        {% endfor %}
+        </ol>
+
+{% comment %} {% else %}
+    <h1>No Team Created Yet!</h1>
+{% endif %} {% endcomment %}
+
+{% endblock content %}
+    

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ol>
+    {% for team in team_list %}
+        <div class="team-list">
+            <li><a href="{% url 'fantasy_app:singleteam' slug=team.slug %}"><h3 class="team-title">{{ team.team_name }}</h3></a></li>
+            
+        </div>
+    {% endfor %}
+    </ol>
+{% endblock %}

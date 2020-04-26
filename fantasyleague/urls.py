@@ -1,6 +1,6 @@
 """fantasyleague URL Configuration
 
-The `urlpatterns` list routes URLs to views. For more information please see:
+The `urlpatterns` list rpoutes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.0/topics/http/urls/
 Examples:
 Function views
@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url,include
-from . import views
+from . import views,settings
+from django.contrib.staticfiles.urls import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$',views.HomePage.as_view(), name='home'),
@@ -24,4 +27,9 @@ urlpatterns = [
     url(r'^accounts/',include('django.contrib.auth.urls')),
     url(r'^test/$', views.TestPage.as_view(), name='test'),
     url(r'^thanks/$', views.ThanksPage.as_view(), name='thanks'),
+    url(r'^fantasy/', include('fantasy_app.urls', namespace='fantasy_app')),
+    url(r'^team/', include('user_team.urls', namespace='user_team')),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
