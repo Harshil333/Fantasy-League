@@ -2,12 +2,29 @@
 
 
 {% block content %}
-    <ol>
-        
+<div class="jumbotron">
+    <h1 id="haha">Leaderboard</h1>
+    <br>
+    <table id="player_table" style="width: 50%;">
+        <thead>
+            <th>Rank</th>
+            <th>Contestant</th> 
+            <th>Points</th>
+        </thead>
         {% for user in user_team_list %}
-            <li>{{ user.user.username }} {{user.total_points}}</li>
+            <tr>
+                {% if forloop.counter == 1 %}
+                    <td id="top"><i class="fas fa-crown"></i></td>
+                    <td id="top">{{ user.user.username }}</td>
+                    <td id="top">{{user.total_points}}</td>
+                {% else %}
+                    <td>{{forloop.counter}}</td>
+                    <td>{{ user.user.username }}</td>
+                    <td>{{user.total_points}}</td>
+                {% endif %}  
+            </tr>
         {% endfor %}
-            
-    </ol>
+    </table>
+</div>
 {% endblock content %}
     

@@ -1,20 +1,46 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
-    <div class="team-detail" >
-        <h1 class="team-title">{{ team.team_name }}</h3>
-        <img src="{{team.logo.url}}" alt="">
-        <div class="Homeground"><h4>Homeground: {{ team.home_city }}</h4></div>
+
+<div class="row">
+    <div class="col-12 col-md-4">
+        <div class="card text-center second team-{{team.slug}}" style="width: 18rem;">
+            <img class="card-img-top" src="{{team.logo.url}}">
+            <div class="card-body">
+            <h3 class="card-title text-color-white">{{ team.team_name }}</h3>
+            </div>
+            <div class="card-footer text-color-white"><p>Homeground: {{ team.home_ground }}</p></div>
+                
+
+        </div>
     </div>
-</div>
-<div>
-    <div class='team-player-list'>
-        <ol>
-        {% for player in team.players.all %}
-        <li><a href="{% url 'fantasy_app:player_detail' slug=player.slug %}"><h3 class="player-name">{{ player.player_name }}</h3></a></li>
+
+    <div class="col-6 col-md-8" >
+        {%for player in team.players.all %}
+        <div class="card meracard merawalacard">
+            <div class="row ">
+                <div class="col-sm-4">
+                    <img class='sizemyimage' src="{{player.player_image.url}}" class="w-100">
+                </div>
+                <div class="col-sm-4">
+                    <div class="card-block">
+                        <h4 class="card-title">{{player.player_name}}</h4>
+                        <p class="card-text">{{player.designation|upper}}</p>
+                    </div>
+                </div>
+                <div class='col-sm-4'>
+                    <div class='cont'>
+                        <h4 class="card-text">Points: {{player.points}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-       </ol>     
     </div>
 </div>
+
 {% endblock %}
+
+
+
+

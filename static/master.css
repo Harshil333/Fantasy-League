@@ -1,4 +1,257 @@
-img{
-    height: 150px;
-    width: 200px
+ /* body{
+    background-color:#99ff99
+ } */
+ .border-gradient-orange {
+     border: 10px solid;
+     border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: linear-gradient(to left,orange, red);
+}
+.border-gradient-purple {
+    border: 10px solid;
+     border-image-slice: 1;
+    border-width: 5px;
+  border-image-source: linear-gradient(to left, #743ad5, #d53a9d);
+}
+.border-gradient-purple-gold {
+    border: 10px solid;
+     border-image-slice: 1;
+    border-width: 5px;
+  border-image-source: linear-gradient(to left, gold, purple);
+}
+.border-gradient-green {
+    border: 10px solid;
+     border-image-slice: 1;
+    border-width: 5px;
+  border-image-source: linear-gradient(to left, #00C853, #B2FF59);
+}
+
+
+ .social-icons {
+    padding-right:70px;
+    padding-bottom: 10px;
+    list-style-type: none!important;
+    position:absolute;
+    bottom:0;
+    right: 0;
+    float: right;
+}
+
+ .social-icons-2 {
+    padding-left: 10px;
+    font-size: small;
+    list-style-type: none!important;
+    position:absolute;
+    bottom:0;
+    left: 0;
+    float: left;
+}
+ 
+ #page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
+} 
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3.4rem;            /* Footer height */
+}
+
+
+a:link,a:visited{
+    color:black;
+    text-decoration: none;
+}
+
+nav a:link,nav a:visited,nav ul li a:link,nav ul li a:visited{
+    color:white;
+    text-decoration: none;
+}
+
+.navbar-color{
+    background-color: #37003c;
+}
+
+.header-color{
+    background-color: white;
+}
+
+.meracard {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.merawalacard{
+    margin:25px;
+    padding:10px;
+}
+
+.cont{
+    margin:auto; 
+    padding: 10px;
+}
+
+.myjpg {
+    border-radius: 5px 5px 0 0;
+}
+
+.user_pl{
+    text-align: center;
+}
+
+#player_table {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid white;
+    /*opacity: 0.97;*/
+    background: white;
+}
+#player_table td, #player_table th{
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+#player_table tr:hover {background-color: #ddd;}
+#player_table th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #37003c;
+    color: white;
+}
+#haha{
+    text-align: center;
+}
+#top{
+    background-color: rgb(0, 255, 0, 0.5);
+}
+.circle{
+    width: 46px;
+    height: 30px;
+    transform: .4s;
+}
+.circle-index{
+    width: 30px;
+    height: 20px;
+    transform: .4s;
+}
+.circle:hover{
+    transform: scale(1.6);
+}
+.sticky{
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 30px;
+    left: 19.3%;
+    width: 70%;
+    height: 20px;
+}
+
+#create_button{
+    background-color: #03f283;
+}
+.second{
+    margin-top:30px;
+}
+
+.sec{
+    margin-bottom: 30px;
+}
+
+.performer{
+    height:200px;
+    width:200px;
+}
+/* MI */
+.team-one-1,.team-mumbai-indians{
+    background-color:#005490 ;
+}
+
+/* CSK */
+.team-one-2,.team-chennai-super-kings{
+    background-color: #fecf03;
+}
+
+/* RCB */
+.team-one-3,.team-royal-challengers-bangalore{
+    background-color:#2f2f2f  ;
+}
+
+/* KKR */
+.team-one-4,.team-kolkata-knight-riders{
+    background-color: #643c82;
+}
+
+/* DC */
+.team-two-1,.team-delhi-capitals{
+    background-color: #282968;
+}
+
+/* SRH */
+.team-two-2,.team-sunrisers-hyderabad{
+    background-color: #e44c35;
+}
+
+/* KXIP */
+.team-two-3,.team-kings-xi-punjab{
+    background-color: #932e2c;
+}
+
+/* RR */
+.team-two-4,.team-rajasthan-royals{
+    background-color: #203a76;
+}
+
+.text-color-white{
+    color:white;
+}
+.pixel{
+    height:284px;
+    width:284px;
+}
+
+.sizemyimage{
+    height:100px;
+    width:100px;
+}
+
+.match-card{
+    padding-top: 10px;
+}
+
+/* Split the screen in half */
+.split {
+    height: 100%;
+    width: 50%;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  /* Control the left side */
+  .left {
+    left: 0;
+  }
+  
+  /* Control the right side */
+  .right {
+    right: 0;
+  }
+
+li,a,p,th,td{
+    font-family: 'Open Sans', sans-serif;
+    
+}
+
+h1,h3,h5,h6{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
 }

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container-fluid second">
+    <div class="card-columns p-3 second">
+    {% for match in match_list %}
+            <div class="card meracard text-center border-gradient-green">
+                <div class="contain container">
+                    
+                    <h4 class="match-card"><img class="circle" src="{{ match.team1.logo.url }}" alt="">{{match.team1.shortform}} vs {{match.team2.shortform}}<img class="circle" src="{{ match.team2.logo.url }}" alt=""></h4>
+                    <h6>{{match.venue}}</h6>
+                    <p>{{match.time}}, {{match.date}}</p>
+                </div>
+            </div>
+    {% endfor %}
+    </div>
+    </div>
+{% endblock content %}

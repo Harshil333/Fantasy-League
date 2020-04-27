@@ -2,29 +2,36 @@
 
 {% block content %}
 
-        
-    <h1>Credits Remaining: {{credits}}</h1> 
-    <table>
-        <tr>
-        <th>Player</th>
-        <th>Credits</th>
+    <div class="container" id="haha" style="background-color: #37003c; color: white; width: 70%;padding-top:10px; padding-bottom: 10px;margin-top:10px;">
+        <h1>{{ user.username }}'s Team</h1>
+    </div>
+    <br>
+    <h3 id="haha">Total Credits Left: {{credits}}</h3> 
+    <br>
+    <div class="jumbotron" style="margin-top:-30px;">
+    <table id="player_table" cellspacing="0" cellpadding="0">
+        <thead>
         <th>Team</th>
-        <th></th>
-        </tr>
+        <th>Player</th>
+        <th>Designation</th>
+        <th>Credits</th>
+        <th>Add/Remove</th>
+        </thead>
     {% for  player in object_list %}
-    <tr>
+    <tr>        
+        <td><img class = "circle" src ="{{ player.team.logo.url }}"></td>
         <td>{{ player.player_name }}</td>
+        <td>{{ player.designation|upper }}</td>
         <td>{{ player.credit }}</td>
-        <td>{{ player.team.team_name }}</td>
         <td>
         {% if player in userplayer_list %}
-            <a href='{% url 'user_team:remove' slug=player.slug %}' class='btn btn-sm btn-fill btn-danger'><span class="glyphicon glyphicon-minus"></a>
+            <a href='{% url 'user_team:remove' slug=player.slug %}' class='btn btn-sm btn-fill btn-danger'><i class="fas fa-minus"></i></a>
         {% else %}
                 
                 {% if player.credit <= credits %} 
-                    <a href='{% url 'user_team:add' slug=player.slug  %}' class='btn btn-sm btn-fill btn-success'><span class="glyphicon glyphicon-plus"></span></a>
+                    <a href='{% url 'user_team:add' slug=player.slug  %}' class='btn btn-sm btn-fill btn-success active'><i class="fas fa-plus"></i></a>
                 {% else %} 
-                    <a href='' class='btn btn-sm btn-fill btn-secondary'><span class="glyphicon glyphicon-plus"></span></a>
+                    <a href='' class='btn btn-sm btn-fill btn-success disabled'><i class="fas fa-plus"></i></a>
                 {% endif %}
                     
         {% endif %}
@@ -33,10 +40,17 @@
     </tr>
     {% endfor %}
     </table>
-    {% if userplayer_list|length == 2 %} 
-        <a href='{% url 'user_team:viewmyteam' %}' class='btn btn-sm btn-fill btn-success'>Create Team</a>
+</div>
+    <div class="sticky">
+    {% if userplayer_list|length == 11 %} 
+        <a id="create_button" href='{% url 'user_team:viewmyteam' %}' class='btn btn-lg btn-fill btn-success active btn-block'>Create Team</a>
     {% else %} 
-        <a href='' class='btn btn-sm btn-fill btn-secondary'>Create Team</a>
+        <a id="create_button" href='' class='btn btn-lg btn-fill btn-success disabled btn-block'>Create Team</a>
     {% endif %} 
+    </div>
+
+<br>
+<br>
+
 {% endblock content %}
     

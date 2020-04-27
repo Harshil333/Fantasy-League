@@ -1,11 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-    <ol>
-    {% for team in team_list %}
-        <div class="team-list">
-            <li><a href="{% url 'fantasy_app:singleteam' slug=team.slug %}"><h3 class="team-title">{{ team.team_name }}</h3></a></li>
-            
+
+ 
+
+<div class="card-deck second">
+    {% for team in team_list|slice:"0:4" %}
+            <div class="card text-center team-one-{{forloop.counter}}">
+                
+                    <img class="card-img-top logo-small-{{forloop.counter}}" src="{{ team.logo.url }}" alt="Card image cap"> 
+                    <div class="card-body">
+                        <a href="{% url 'fantasy_app:singleteam' slug=team.slug %}">
+                        <h5 class="card-title text-color-white">{{ team.team_name }}</h5>
+                    </a>
+                    </div>
+                    <div class="card-footer text-color-white"><p>{{ team.home_ground }}</p></div>
+            </div>
+    {% endfor %}
+</div>
+
+<div class="card-deck second sec">
+    {% for team in team_list|slice:"4:8" %}
+        <div class="card text-center team-two-{{forloop.counter}} ">
+        <a href="{% url 'fantasy_app:singleteam' slug=team.slug %}">
+            <img class="card-img-top logo-sm-{{forloop.counter}}" src="{{ team.logo.url }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title text-color-white">{{ team.team_name }}</h5>
+            </div>
+        
+            <div class="card-footer text-color-white">
+                <p>{{ team.home_ground }}</p>
+            </div>
+        </a>
         </div>
     {% endfor %}
-    </ol>
+</div>
 {% endblock %}

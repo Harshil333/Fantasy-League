@@ -6,9 +6,9 @@ from django.urls import reverse
 class Team(models.Model):
     team_name = models.CharField(max_length=40)
     slug = models.SlugField(editable=False,unique=True)
-    home_city = models.CharField(max_length=40)
+    home_ground = models.CharField(max_length=40)
     logo = models.ImageField(upload_to="logo/")
-
+    shortform = models.CharField(max_length=10,null=True,blank=True)
     def __str__(self):
         return self.team_name
 
@@ -21,7 +21,7 @@ class Player(models.Model):
     player_image = models.ImageField(upload_to='player/')
     credit = models.PositiveIntegerField()
     points = models.PositiveIntegerField()
-    designation=models.CharField(max_length = 30, choices = [('WK','WicketKeeper'),('BAT','Batsman'),('BOWL','Bowler'),('ALL','All Rounder')])
+    designation=models.CharField(max_length = 30, choices = [('W/K','WicketKeeper'),('Bat','Batsman'),('Bowl','Bowler'),('All round','All Rounder')])
     team = models.ForeignKey(Team,related_name='players',on_delete=models.CASCADE)
     slug = models.SlugField(editable=False,unique=True)
 
@@ -40,8 +40,6 @@ class Match(models.Model):
     time = models.TimeField(auto_now=False, auto_now_add=False)
     date = models.DateField(auto_now=False, auto_now_add=False)
     venue = models.CharField(max_length=30)
-
-    #functions
 
 
     

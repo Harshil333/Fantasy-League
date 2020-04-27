@@ -1,8 +1,84 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="row">
+        <div class="col-12 col-md-8">
+            <h1 style="padding-left:230px; padding-top: 10px;">Top Performers</h1>
+            
+            <div class="card-deck second">
+                    <div class="card meracard text-center border-gradient-orange">
+                        <img class="card-img-top performer" style="margin-left:13px;margin-top:5px" src="{{best_batsman.player_image.url}}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" >{{best_batsman.player_name}}</h5>
+                            <p class="card-text" >{{best_batsman.points}} points</p>
+                        </div>
+                    </div> 
+                    <div class="card meracard text-center border-gradient-purple">
+                        <img class="card-img-top performer" style="margin-left:13px;margin-top:5px " src="{{best_bowler.player_image.url}}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" >{{best_bowler.player_name}}</h5>
+                            <p class="card-text" >{{best_bowler.points}} points</p>
+                        </div>
+                    </div> 
+                    <div class="card meracard text-center border-gradient-purple-gold">
+                        <img class="card-img-top performer" style="margin-left:13px;margin-top:5px" src="{{best_ar.player_image.url}}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title" >{{best_ar.player_name}}</h5>
+                            <p class="card-text" >{{best_ar.points}} points</p>
+                        </div>
+                    </div> 
+            </div>
+    </div>
+
+    <div class="col-6 col-md-4 " style="padding-left: 50px;">
+        <h1 style="padding-left: 45px; padding-top: 10px;">Leaderboard</h1>
+        <br>
+        <table id="player_table" style="width: 50%;">
+        <thead>
+            <th>Rank</th>
+            <th>Contestant</th> 
+            <th>Points</th>
+        </thead>
+        {% for user in user_team_list %}
+            <tr>
+                {% if forloop.counter == 1 %}
+                    <td id="top"><i class="fas fa-crown"></i></td>
+                    <td id="top">{{ user.user.username }}</td>
+                    <td id="top">{{user.total_points}}</td>
+                {% else %}
+                    <td>{{forloop.counter}}</td>
+                    <td>{{ user.user.username }}</td>
+                    <td>{{user.total_points}}</td>
+                {% endif %}  
+            </tr>
+        {% endfor %}
+    </table>
+    
+        </div>
+    </div>
+    <br>
+    <hr style="width:300px; margin-left:240px;background-color:black;">
+    <div class="row" style="margin-top:20px">
+        <div class="col-12 col-md-8">
+            <div><h1 style="padding-left:300px; padding-top:10px;">Schedule</h1></div>
+            <div class="container-fluid second">
+                <div class="card-columns p-3 second">
+                    {% for match in match_list %}
+                        <div class="card meracard text-center border-gradient-green">
+                            <div class="contain container">
+                    
+                                <h6 class="match-card"><img class="circle-index" src="{{ match.team1.logo.url }}" alt="">{{match.team1.shortform}} vs {{match.team2.shortform}}<img class="circle-index" src="{{ match.team2.logo.url }}" alt=""></h6>
+                                <h6>{{match.venue}}</h6>
+                                <p>{{match.time}}, {{match.date}}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     
-    <h1>Welcome to Fantasy League!</h1>
 {% endblock content %}
     

@@ -1,22 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-{% comment %} {% if object_list|length == 2 %} {% endcomment %}
-        
-    <h3>Points: {{points}} </h3>
-        <ol>
-        {% for player in object_list %}
-            
-            {% if player.user == user %}
-                <li>{{ player.player.player_name }}</li>
-            {% endif %}        
-        {% endfor %}
-        </ol>
-
-{% comment %} {% else %}
-    <h1>No Team Created Yet.</h1>
-{% endif %} {% endcomment %}
-
+    <div class='jumbotron meracard'>
+        <h2 class="user_pl">{{user_team}}'s Team</h2>
+        <h3 class="user_pl">Total Points: {{points}}</h3>
+    </div>
+    {%for player in object_list %}
+        <div class="card meracard merawalacard border-gradient-purple-gold">
+        <div class="row ">
+        <div class="col-sm-4">
+            <img class='sizemyimage' src="{{player.player.player_image.url}}" class="w-100">
+        </div>        <div class="col-sm-4">
+            <div class="card-block">
+              <h2 class="card-title">{{player.player.player_name}}</h2>
+              <p class="card-text">{{player.player.designation|upper}}</p>
+            </div>
+        </div>
+        <div class='col-sm-4'>
+            <div class='cont'>
+                <h4 class="card-text">Points: {{player.player.points}}</h3>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% endfor %}
 {% endblock content %}
+    
+
+
     
